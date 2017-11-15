@@ -1,0 +1,5 @@
+IGR:
+  host: devlinux<server-number>dmz.staempfli.dmz
+  port: 22
+  rootDir: /home/<project-name>/public_html
+  deployUsername: <server-username>

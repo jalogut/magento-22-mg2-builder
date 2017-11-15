@@ -1,0 +1,4 @@
+composer.json=>magento/composer.json
+composer.lock=>magento/composer.lock
+
+symlinks/magento/**=>magento

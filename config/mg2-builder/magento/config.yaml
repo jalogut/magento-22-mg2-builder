@@ -1,0 +1,93 @@
+LOCAL:
+  staempfli_adminextra/header_bar/environment_type:
+    default:
+      0: "local"
+# Disable merge static files
+  dev/js/merge_files:
+    default:
+      0: 0
+  dev/css/merge_css_files:
+    default:
+      0: 0
+# Disable Varnish
+  system/full_page_cache/caching_application:
+    default:
+      0: 1
+# Mails
+  staempfli_mailcatcher/configuration/enabled:
+    default:
+      0: 1
+  staempfli_mailcatcher/configuration/whitelist:
+    default:
+      0: "staempfli.com"
+  staempfli_mailcatcher/configuration/redirect_recipient:
+    default:
+      0: "NULL"
+# SSL Configuration
+  web/secure/use_in_frontend:
+    default:
+      0: 0
+  web/secure/use_in_adminhtml:
+    default:
+      0: 0
+  web/secure/enable_hsts:
+    default:
+      0: 0
+  web/secure/enable_upgrade_insecure:
+    default:
+      0: 0
+  web/secure/base_link_url:
+      default:
+        0: "{{secure_base_url}}"
+  web/unsecure/base_link_url:
+    default:
+      0: "{{unsecure_base_url}}"
+# Store urls
+  web/unsecure/base_url:
+    default:
+      0: "http://${project.name}.lo/"
+  web/secure/base_url:
+    default:
+      0: "http://${project.name}.lo/"
+
+IGR:
+  staempfli_adminextra/header_bar/environment_type:
+      default:
+        0: "igr"
+# Disable Varnish
+  system/full_page_cache/caching_application:
+    default:
+      0: 1
+# Mails
+  staempfli_mailcatcher/configuration/enabled:
+    default:
+      0: 1
+  staempfli_mailcatcher/configuration/whitelist:
+    default:
+      0: "staempfli.com"
+# SSL Configuration
+  web/secure/use_in_frontend:
+    default:
+      0: 0
+  web/secure/use_in_adminhtml:
+    default:
+      0: 0
+  web/secure/enable_hsts:
+    default:
+      0: 0
+  web/secure/enable_upgrade_insecure:
+    default:
+      0: 0
+  web/secure/base_link_url:
+      default:
+        0: "{{secure_base_url}}"
+  web/unsecure/base_link_url:
+    default:
+      0: "{{unsecure_base_url}}"
+# Store urls
+  web/unsecure/base_url:
+    default:
+      0: "http://<server-subdomain>.dev.staempfli.dmz/"
+  web/secure/base_url:
+    default:
+      0: "http://<server-subdomain>.dev.staempfli.dmz/"

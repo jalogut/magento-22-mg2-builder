@@ -1,0 +1,12 @@
+.idea
+.DS_Store
+/bin
+
+# Ignore all Magento code files except our code in "magento/app"
+/magento/*
+!/magento/app
+/magento/app/code/Magento
+/magento/app/design/*/Magento
+/magento/app/etc
+/magento/app/i18n/magento
+/magento/app/*.*

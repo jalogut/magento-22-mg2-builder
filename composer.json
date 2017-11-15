@@ -1,0 +1,84 @@
+{
+  "name": "jalogut/deployment-magento-2-2",
+  "description": "Magento 2.2 shop for deployments demo",
+  "type": "project",
+  "license": [
+    "proprietary"
+  ],
+  "authors": [
+    {
+      "name": "Juan Alonso",
+      "email": "juan.jalogut@gmail.com"
+    }
+  ],
+  "config": {
+    "bin-dir": "bin",
+    "vendor-dir": "magento/vendor",
+    "use-include-path": true
+  },
+  "repositories": [
+    {"type": "composer", "url": "https://repo.magento.com/"}
+  ],
+  "require": {
+    "n98/magerun2": "^1.4",
+    "magento/product-community-edition": "~2.2.1",
+    "composer/composer": "@alpha",
+    "staempfli/symlinker-pro": "~1.0"
+  },
+  "require-dev": {
+    "staempfli/magento2-builder-tool": "^1.2",
+    "staempfli/magento2-conventions-checker": "~1.0",
+    "phpunit/phpunit": "~6.2.0"
+  },
+  "extra": {
+    "magento-root-dir": "magento/",
+    "magento-force": "override"
+  },
+  "autoload": {
+    "psr-4": {
+      "Magento\\Framework\\": "magento/lib/internal/Magento/Framework/",
+      "Magento\\Setup\\": "magento/setup/src/Magento/Setup/",
+      "Magento\\": "magento/app/code/Magento/"
+    },
+    "psr-0": {
+      "": "magento/app/code/"
+    },
+    "files": [
+      "magento/app/etc/NonComposerComponentRegistration.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Magento\\Sniffs\\": "magento/dev/tests/static/framework/Magento/Sniffs/",
+      "Magento\\Tools\\": "magento/dev/tools/Magento/Tools/",
+      "Magento\\Tools\\Sanity\\": "magento/dev/build/publication/sanity/Magento/Tools/Sanity/",
+      "Magento\\TestFramework\\Inspection\\": "magento/dev/tests/static/framework/Magento/TestFramework/Inspection/",
+      "Magento\\TestFramework\\Utility\\": "magento/dev/tests/static/framework/Magento/TestFramework/Utility/"
+    }
+  },
+  "scripts": {
+    "preventRunningComposerInMagentoFolder": "[ ! $(basename `pwd`) = 'magento' ] || { echo 'Checking current dir is not magento folder'; exit 1; }",
+    "setPermissionsBin": "chmod -R +x bin magento/bin",
+    "setSymlinks": "bin/symlinker-pro create:from:file config/symlinks/magento.symlinks -f --enable-wildcards",
+    "grumphpInitProject": "[ ! `which grumphp` ] || grumphp git:init",
+    "grumphpInitModules": "[ ! `which grumphp` ] || find magento/vendor/staempfli/* -type f -name grumphp.yml -maxdepth 1 -exec dirname {} \\; | xargs -I{} bash -c \"cd '{}' && grumphp git:init\"",
+    "pre-install-cmd": [
+        "@preventRunningComposerInMagentoFolder"
+    ],
+    "pre-update-cmd": [
+        "@preventRunningComposerInMagentoFolder"
+    ],
+    "post-install-cmd": [
+        "@setPermissionsBin",
+        "@setSymlinks",
+        "@grumphpInitProject",
+        "@grumphpInitModules"
+    ],
+    "post-update-cmd": [
+        "@setPermissionsBin",
+        "@setSymlinks",
+        "@grumphpInitProject",
+        "@grumphpInitModules"
+    ]
+  }
+}

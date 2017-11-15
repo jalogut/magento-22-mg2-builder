@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * phpunit.xml
+ *
+ * @copyright Copyright © 2017 Staempfli AG. All rights reserved.
+ * @author    juan.alonso@staempfli.com
+ */
+-->
+<!DOCTYPE phpunit [
+        <!ENTITY unitTestsDir "../../../../../../../../magento/dev/tests/static">
+        ]>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+         colors="true"
+         bootstrap="&unitTestsDir;/framework/bootstrap.php"
+>
+    <testsuite name="file create to ignore default Magento phpunit.xml.dist">
+    </testsuite>
+</phpunit>
+
