@@ -1,2 +1,0 @@
-imports:
-    - { resource: magento/vendor/staempfli/magento2-conventions-checker/magento2-project-grumphp.yml }

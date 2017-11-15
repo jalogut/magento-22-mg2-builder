@@ -14,7 +14,11 @@
   "config": {
     "bin-dir": "bin",
     "vendor-dir": "magento/vendor",
-    "use-include-path": true
+    "use-include-path": true,
+    "preferred-install": {
+      "staempfli/*": "source",
+      "*": "dist"
+    }
   },
   "repositories": [
     {"type": "composer", "url": "https://repo.magento.com/"}
@@ -27,7 +31,6 @@
   },
   "require-dev": {
     "staempfli/magento2-builder-tool": "^1.2",
-    "staempfli/magento2-conventions-checker": "~1.0",
     "phpunit/phpunit": "~6.2.0"
   },
   "extra": {
@@ -60,8 +63,6 @@
     "preventRunningComposerInMagentoFolder": "[ ! $(basename `pwd`) = 'magento' ] || { echo 'Checking current dir is not magento folder'; exit 1; }",
     "setPermissionsBin": "chmod -R +x bin magento/bin",
     "setSymlinks": "bin/symlinker-pro create:from:file config/symlinks/magento.symlinks -f --enable-wildcards",
-    "grumphpInitProject": "[ ! `which grumphp` ] || grumphp git:init",
-    "grumphpInitModules": "[ ! `which grumphp` ] || find magento/vendor/staempfli/* -type f -name grumphp.yml -maxdepth 1 -exec dirname {} \\; | xargs -I{} bash -c \"cd '{}' && grumphp git:init\"",
     "pre-install-cmd": [
         "@preventRunningComposerInMagentoFolder"
     ],
@@ -70,15 +71,11 @@
     ],
     "post-install-cmd": [
         "@setPermissionsBin",
-        "@setSymlinks",
-        "@grumphpInitProject",
-        "@grumphpInitModules"
+        "@setSymlinks"
     ],
     "post-update-cmd": [
         "@setPermissionsBin",
-        "@setSymlinks",
-        "@grumphpInitProject",
-        "@grumphpInitModules"
+        "@setSymlinks"
     ]
   }
 }
