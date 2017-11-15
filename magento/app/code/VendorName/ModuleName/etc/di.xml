@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * di.xml
+ *
+ * @copyright Copyright © 2017 Staempfli AG. All rights reserved.
+ * @author    juan.alonso@staempfli.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Crontab\TasksProviderInterface">
+        <arguments>
+            <argument name="tasks" xsi:type="array">
+                <item name="CUSTOM_CRON" xsi:type="array">
+                    <item name="expression" xsi:type="string">0 3 * * *</item>
+                    <item name="command" xsi:type="string">{magentoRoot}bin/magento custom:command</item>
+                </item>
+                <item name="CUSTOM_CRON_CHECK_MAINTENANCE" xsi:type="array">
+                    <item name="expression" xsi:type="string">0 4 * * * test -e {magentoRoot}bin/magento &amp;&amp;</item>
+                    <item name="command" xsi:type="string">{magentoRoot}bin/magento custom:command:second</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>
