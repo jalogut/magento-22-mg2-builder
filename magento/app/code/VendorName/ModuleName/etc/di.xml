@@ -22,4 +22,62 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Magento\Framework\Config\File\ConfigFilePool" type="VendorName\ModuleName\Config\File\ConfigFilePool"/>
+    <virtualType name="CustomDeploymentConfig" type="Magento\Framework\App\DeploymentConfig"/>
+    <type name="Magento\Deploy\Model\DeploymentConfig\DataCollector">
+        <arguments>
+            <argument name="deploymentConfig" xsi:type="object">CustomDeploymentConfig</argument>
+        </arguments>
+    </type>
+    <type name="VendorName\ModuleName\Config\File\ConfigFilePool">
+        <arguments>
+            <argument name="additionalConfigFiles" xsi:type="array">
+                <item name="custom" xsi:type="string">custom_config.php</item>
+            </argument>
+            <argument name="additionalSortOrder" xsi:type="array">
+                <item name="custom" xsi:type="string">2</item>
+            </argument>
+        </arguments>
+    </type>
+    <!--<type name="Magento\Framework\App\DeploymentConfig\Reader">-->
+        <!--<arguments>-->
+            <!--<argument name="configFilePool" xsi:type="object" shared="false">VendorName\ModuleName\Config\File\ConfigFilePool</argument>-->
+        <!--</arguments>-->
+    <!--</type>-->
+    <!--<type name="Magento\Deploy\Console\Command\App\ConfigImport\Processor">-->
+        <!--<arguments>-->
+            <!--<argument name="changeDetector" xsi:type="object" shared="false">Magento\Deploy\Model\DeploymentConfig\ChangeDetector</argument>-->
+        <!--</arguments>-->
+    <!--</type>-->
+    <!--<type name="Magento\Framework\Config\File\ConfigFilePool">-->
+        <!--<plugin name="addCustomConfig" type="VendorName\ModuleName\Plugin\AddCustomConfig"/>-->
+    <!--</type>-->
+    <!--<virtualType name="CustomConfigFilePool" type="Magento\Framework\Config\File\ConfigFilePool">-->
+        <!--<arguments>-->
+            <!--<argument name="additionalConfigFiles" xsi:type="array">-->
+                <!--<item name="env_custom_config" xsi:type="string">custom_config.php</item>-->
+            <!--</argument>-->
+        <!--</arguments>-->
+    <!--</virtualType>-->
+    <!--<virtualType name="CustomDeploymentConfig" type="Magento\Framework\App\DeploymentConfig"/>-->
+    <!--<virtualType name="CustomDataCollector" type="Magento\Deploy\Model\DeploymentConfig\DataCollector">-->
+        <!--<arguments>-->
+            <!--<argument name="deploymentConfig" xsi:type="object">CustomDeploymentConfig</argument>-->
+        <!--</arguments>-->
+    <!--</virtualType>-->
+    <!--<virtualType name="CustomChangeDetector" type="Magento\Deploy\Model\DeploymentConfig\ChangeDetector">-->
+        <!--<arguments>-->
+            <!--<argument name="dataConfigCollector" xsi:type="object">CustomDataCollector</argument>-->
+        <!--</arguments>-->
+    <!--</virtualType>-->
+    <!--<virtualType name="CustomProcessor" type="Magento\Deploy\Console\Command\App\ConfigImport\Processor">-->
+        <!--<arguments>-->
+            <!--<argument name="changeDetector" xsi:type="object">CustomChangeDetector</argument>-->
+        <!--</arguments>-->
+    <!--</virtualType>-->
+    <!--<type name="Magento\Deploy\Console\Command\App\ConfigImportCommand">-->
+        <!--<arguments>-->
+            <!--<argument name="processor" xsi:type="object">CustomProcessor</argument>-->
+        <!--</arguments>-->
+    <!--</type>-->
 </config>
