@@ -27,10 +27,12 @@
     "n98/magerun2": "^1.4",
     "magento/product-community-edition": "~2.2.1",
     "composer/composer": "@alpha",
-    "staempfli/symlinker-pro": "~1.0"
+    "staempfli/symlinker-pro": "~1.0",
+    "avstudnitz/scopehint2": "~1.0.1"
   },
   "require-dev": {
     "staempfli/magento2-builder-tool": "^1.2",
+    "tddwizard/magento2-fixtures": "dev-master@dev",
     "phpunit/phpunit": "~6.2.0"
   },
   "extra": {

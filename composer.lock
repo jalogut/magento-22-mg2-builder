@@ -4,8 +4,41 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "636bc325a812c6f4a140f8858de4d7c2",
+    "content-hash": "5f043dd5f0ce356fef19f65546f856f1",
     "packages": [
+        {
+            "name": "avstudnitz/scopehint2",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avstudnitz/AvS_ScopeHint2.git",
+                "reference": "7e69f9c3aa3322884d4159414ca5955704587eb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avstudnitz/AvS_ScopeHint2/zipball/7e69f9c3aa3322884d4159414ca5955704587eb3",
+                "reference": "7e69f9c3aa3322884d4159414ca5955704587eb3",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": "~100.0|~101.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "AvS\\ScopeHint\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "N/A",
+            "time": "2017-10-20T09:44:45+00:00"
+        },
         {
             "name": "braintree/braintree_php",
             "version": "3.22.0",
@@ -6597,16 +6630,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.14",
+            "version": "v0.8.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "91e53c16560bdb8b9592544bb38429ae00d6baee"
+                "reference": "b1d289c2cb03a2f8249912c53e96ced38f879926"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/91e53c16560bdb8b9592544bb38429ae00d6baee",
-                "reference": "91e53c16560bdb8b9592544bb38429ae00d6baee",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/b1d289c2cb03a2f8249912c53e96ced38f879926",
+                "reference": "b1d289c2cb03a2f8249912c53e96ced38f879926",
                 "shasum": ""
             },
             "require": {
@@ -6620,7 +6653,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "~1.11",
                 "hoa/console": "~3.16|~1.14",
-                "phpunit/phpunit": "~4.4|~5.0",
+                "phpunit/phpunit": "^4.8.35|^5.4.3",
                 "symfony/finder": "~2.1|~3.0"
             },
             "suggest": {
@@ -6666,7 +6699,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-11-04T16:06:49+00:00"
+            "time": "2017-11-16T14:29:51+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -7013,16 +7046,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.30",
+            "version": "v2.8.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "3eeaec6a5d9a253925139cd19eda07d882635d87"
+                "reference": "7cad097cf081c0ab3d0322cc38d34ee80484d86f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/3eeaec6a5d9a253925139cd19eda07d882635d87",
-                "reference": "3eeaec6a5d9a253925139cd19eda07d882635d87",
+                "url": "https://api.github.com/repos/symfony/console/zipball/7cad097cf081c0ab3d0322cc38d34ee80484d86f",
+                "reference": "7cad097cf081c0ab3d0322cc38d34ee80484d86f",
                 "shasum": ""
             },
             "require": {
@@ -7070,7 +7103,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-12T16:36:54+00:00"
+            "time": "2017-11-16T15:20:19+00:00"
         },
         {
             "name": "symfony/debug",
@@ -7131,7 +7164,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.30",
+            "version": "v2.8.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -7191,7 +7224,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.3.12",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -7240,7 +7273,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.3.12",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -7348,7 +7381,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v2.8.30",
+            "version": "v2.8.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -7461,7 +7494,7 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v2.8.30",
+            "version": "v2.8.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
@@ -7534,7 +7567,7 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.3.12",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
@@ -7602,7 +7635,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.30",
+            "version": "v2.8.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -11096,6 +11129,59 @@
             "time": "2017-10-31T12:59:34+00:00"
         },
         {
+            "name": "tddwizard/magento2-fixtures",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tddwizard/magento2-fixtures.git",
+                "reference": "b6a0908d9c6738582ef2895a374ea80fae685d7b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tddwizard/magento2-fixtures/zipball/b6a0908d9c6738582ef2895a374ea80fae685d7b",
+                "reference": "b6a0908d9c6738582ef2895a374ea80fae685d7b",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": "^100.1|^101.0",
+                "magento/module-catalog": "^101.0|^102.0",
+                "magento/module-checkout": "^100.1",
+                "magento/module-customer": "^100.1|^101.0",
+                "magento/module-indexer": "^100.0",
+                "magento/zendframework1": "^1.12",
+                "php": "^7.0|^7.1"
+            },
+            "require-dev": {
+                "pds/skeleton": "^1.0",
+                "phpro/grumphp": "^0.11.6",
+                "phpstan/phpstan": "^0.8.0",
+                "phpunit/phpunit": "^5.0|^6.0",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php",
+                    "src/phpunit4.php"
+                ],
+                "psr-4": {
+                    "TddWizard\\Fixtures\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabian Schmengler",
+                    "email": "fs@integer-net.de"
+                }
+            ],
+            "description": "Fixture library for Magento 2 integration tests",
+            "time": "2017-11-11T00:01:07+00:00"
+        },
+        {
             "name": "theseer/tokenizer",
             "version": "1.1.0",
             "source": {
@@ -11189,7 +11275,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "composer/composer": 15
+        "composer/composer": 15,
+        "tddwizard/magento2-fixtures": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
