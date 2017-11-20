@@ -1,7 +1,7 @@
 <?php
 $config = [];
 
-if (strtoupper(getenv('ENV')) == 'LOCAL') {
+if (strtoupper(getenv('CONFIG_ENV')) == 'LOCAL') {
     $configLocal = [
         'system' =>
             array(

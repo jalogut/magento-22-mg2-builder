@@ -12,15 +12,8 @@ use Magento\Framework\Config\File\ConfigFilePool as MagentoConfigFilePool;
 
 class ConfigFilePool extends MagentoConfigFilePool
 {
-    /**
-     * Default files for configuration
-     *
-     * @var array
-     */
-    private $applicationConfigFiles = [
-        self::APP_CONFIG => 'config.php',
-        self::APP_ENV => 'env.php',
-    ];
+
+    private $configFiles = [];
 
     private $configFilesOrder = [
         self::APP_CONFIG => 1,
@@ -34,20 +27,14 @@ class ConfigFilePool extends MagentoConfigFilePool
      */
     public function __construct($additionalConfigFiles = [], array $additionalSortOrder = [])
     {
-        $this->applicationConfigFiles = array_merge($this->applicationConfigFiles, $additionalConfigFiles);
-        $filesOrder = array_merge($this->configFilesOrder, $additionalSortOrder);
-        $this->sortConfigFiles($filesOrder);
+        parent::__construct($additionalConfigFiles);
+        $this->configFilesOrder = array_merge($this->configFilesOrder, $additionalSortOrder);
     }
 
-    private function sortConfigFiles(array $sortOrder)
+    private function setConfigEnvironmentMode()
     {
-        uksort(
-            $this->applicationConfigFiles,
-            function ($a, $b) use ($sortOrder)
-            {
-                return $sortOrder[$a] <=> $sortOrder[$b];
-            }
-        );
+        $files = $this->getPaths();
+
     }
 
     /**
@@ -57,7 +44,21 @@ class ConfigFilePool extends MagentoConfigFilePool
      */
     public function getPaths()
     {
-        return $this->applicationConfigFiles;
+        if (!$this->configFiles) {
+            $this->configFiles = $this->sortConfigFiles(parent::getPaths(), $this->configFilesOrder);
+        }
+        return $this->configFiles;
+    }
+
+    private function sortConfigFiles(array $configFiles, array $sortOrder) : array
+    {
+        uksort(
+            $configFiles,
+            function ($a, $b) use ($sortOrder) {
+                return $sortOrder[$a] <=> $sortOrder[$b];
+            }
+        );
+        return $configFiles;
     }
 
     /**
