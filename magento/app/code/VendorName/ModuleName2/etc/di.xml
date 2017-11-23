@@ -1,40 +1,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="specificConfigInitialDataProvider" type="VendorName\ModuleName2\Model\Config\Source\InitialConfigSource">
-        <arguments>
-            <argument name="reader" xsi:type="object">Magento\Framework\App\DeploymentConfig\Reader</argument>
-            <argument name="configType" xsi:type="const">Magento\Config\App\Config\Type\System::CONFIG_TYPE</argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="appDumpSystemSource" type="Magento\Config\App\Config\Source\DumpConfigSourceAggregated">
+    <virtualType name="skipDumpSystemSource" type="Magento\Config\App\Config\Source\DumpConfigSourceAggregated">
         <arguments>
             <argument name="sources" xsi:type="array">
-                <item name="modular" xsi:type="array">
-                    <item name="source" xsi:type="object">Magento\Config\App\Config\Source\ModularConfigSource</item>
-                    <item name="sortOrder" xsi:type="string">10</item>
-                </item>
-                <item name="dynamic" xsi:type="array">
-                    <item name="source" xsi:type="object">Magento\Config\App\Config\Source\RuntimeConfigSource</item>
-                    <item name="sortOrder" xsi:type="string">100</item>
-                </item>
-                <item name="initial" xsi:type="array">
-                    <item name="source" xsi:type="object">specificConfigInitialDataProvider</item>
-                    <item name="sortOrder" xsi:type="string">1000</item>
-                </item>
             </argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="specificConfigSystemSource" type="appDumpConfigSystemSource">
-        <arguments>
             <argument name="rules" xsi:type="array">
-                <item name="default" xsi:type="const">Magento\Config\App\Config\Source\DumpConfigSourceAggregated::RULE_TYPE_EXCLUDE</item>
-                <item name="includeInConfigPhp" xsi:type="const">Magento\Config\App\Config\Source\DumpConfigSourceAggregated::RULE_TYPE_INCLUDE</item>
-            </argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="specificEnvSystemSource" type="appDumpEnvSystemSource">
-        <arguments>
-            <argument name="rules" xsi:type="array">
-                <item name="default" xsi:type="const">Magento\Config\App\Config\Source\DumpConfigSourceAggregated::RULE_TYPE_EXCLUDE</item>
             </argument>
         </arguments>
     </virtualType>
@@ -42,24 +11,14 @@
         <arguments>
             <argument name="sources" xsi:type="array">
                 <item name="system" xsi:type="array">
-                    <item name="source" xsi:type="object">specificConfigSystemSource</item>
-                    <item name="pool" xsi:type="const">Magento\Framework\Config\File\ConfigFilePool::APP_CONFIG</item>
-                    <item name="comment" xsi:type="object">VendorName\ModuleName2\Model\Config\Export\IgnoreComments</item>
+                    <item name="source" xsi:type="object">skipDumpSystemSource</item>
+                    <item name="namespace" xsi:type="string">skipSystem</item>
+                    <item name="comment" xsi:type="string"></item>
                 </item>
                 <item name="system_env" xsi:type="array">
-                    <item name="source" xsi:type="object">specificEnvSystemSource</item>
-                    <item name="pool" xsi:type="const">Magento\Framework\Config\File\ConfigFilePool::APP_ENV</item>
+                    <item name="source" xsi:type="object">skipDumpSystemSource</item>
+                    <item name="namespace" xsi:type="string">skipSystem</item>
                 </item>
-            </argument>
-        </arguments>
-    </type>
-    <preference for="Magento\Config\Model\Config\TypePool" type="VendorName\ModuleName2\Model\Config\Type\TypeConfigPool" />
-    <type name="VendorName\ModuleName2\Model\Config\Type\TypeConfigPool">
-        <arguments>
-            <argument name="includeInConfigPhp" xsi:type="array">
-                <item name="dev/js/merge_files" xsi:type="string">1</item>
-                <item name="dev/css/merge_css_files" xsi:type="string">1</item>
-                <item name="dev/static/sign" xsi:type="string">1</item>
             </argument>
         </arguments>
     </type>
