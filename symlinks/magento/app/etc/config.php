@@ -122,11 +122,11 @@ return array (
       array (
         'js' => 
         array (
-          'merge_files' => '1',
+          'minify_files' => '1',
         ),
         'css' => 
         array (
-          'merge_css_files' => '1',
+          'minify_files' => '1',
         ),
         'static' => 
         array (
