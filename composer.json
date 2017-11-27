@@ -24,8 +24,8 @@
     {"type": "composer", "url": "https://repo.magento.com/"}
   ],
   "require": {
-    "n98/magerun2": "^1.4",
     "staempfli/magento2-builder-tool": "^1.2",
+    "n98/magerun2": "^1.4",
     "magento/product-community-edition": "~2.2.1",
     "composer/composer": "@alpha",
     "staempfli/symlinker-pro": "~1.0",
