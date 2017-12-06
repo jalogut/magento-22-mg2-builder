@@ -24,7 +24,7 @@
     {"type": "composer", "url": "https://repo.magento.com/"}
   ],
   "require": {
-    "staempfli/magento2-builder-tool": "dev@magento2.2",
+    "staempfli/magento2-builder-tool": "dev-magento2.2",
     "n98/magerun2": "^1.4",
     "magento/product-community-edition": "~2.2.1",
     "composer/composer": "@alpha",
