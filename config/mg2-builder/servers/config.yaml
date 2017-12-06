@@ -1,5 +1,5 @@
 IGR:
-  host: devlinux<server-number>dmz.staempfli.dmz
+  host: devlinux04dmz.staempfli.dmz
   port: 22
-  rootDir: /home/<project-name>/public_html
-  deployUsername: <server-username>
+  rootDir: /home/magento22/public_html
+  deployUsername: magento22
