@@ -7098,12 +7098,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/staempfli/magento2-builder-tool.git",
-                "reference": "6e26ffb8fedbcfce9d3081b5a31e2b8d613242b0"
+                "reference": "aed086480e6f1e6c487764561006fc8c1f7851e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/staempfli/magento2-builder-tool/zipball/6e26ffb8fedbcfce9d3081b5a31e2b8d613242b0",
-                "reference": "6e26ffb8fedbcfce9d3081b5a31e2b8d613242b0",
+                "url": "https://api.github.com/repos/staempfli/magento2-builder-tool/zipball/aed086480e6f1e6c487764561006fc8c1f7851e2",
+                "reference": "aed086480e6f1e6c487764561006fc8c1f7851e2",
                 "shasum": ""
             },
             "require": {
@@ -7133,7 +7133,7 @@
                 "sync",
                 "tool"
             ],
-            "time": "2017-12-06 16:11:20"
+            "time": "2017-12-06 16:32:41"
         },
         {
             "name": "staempfli/symlinker-pro",
