@@ -11,11 +11,11 @@ if (strtoupper(getenv('CONFIG_ENV_MODE')) == 'LOCAL') {
                             array(
                                 'js' =>
                                     array(
-                                        'merge_files' => '0',
+                                        'minify_files' => '0',
                                     ),
                                 'css' =>
                                     array(
-                                        'merge_css_files' => '0',
+                                        'minify_files' => '0',
                                     ),
                                 'static' =>
                                     array(

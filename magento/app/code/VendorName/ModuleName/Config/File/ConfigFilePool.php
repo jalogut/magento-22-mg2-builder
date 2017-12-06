@@ -12,12 +12,46 @@ use Magento\Framework\Config\File\ConfigFilePool as MagentoConfigFilePool;
 
 class ConfigFilePool extends MagentoConfigFilePool
 {
+    const APP_CONFIG = 'app_config';
+    const APP_CONFIG_ENV = 'app_config_env';
+    const APP_ENV = 'app_env';
 
-    private $configFiles = [];
+    /**
+     * @deprecated Magento does not support custom config file pools since 2.2.0 version
+     */
+    const LOCAL = 'local';
 
-    private $configFilesOrder = [
-        self::APP_CONFIG => 1,
-        self::APP_ENV => 99,
+    /**
+     * @deprecated Magento does not support custom config file pools since 2.2.0 version
+     */
+    const DIST = 'dist';
+
+    /**
+     * Default files for configuration
+     *
+     * @var array
+     */
+    private $applicationConfigFiles = [
+        self::APP_CONFIG => 'config.php',
+        self::APP_CONFIG_ENV => 'config_env.php',
+        self::APP_ENV => 'env.php',
+    ];
+
+    /**
+     * Initial files for configuration
+     *
+     * @var array
+     * @deprecated 100.2.0 Magento does not support custom config file pools since 2.2.0 version
+     */
+    private $initialConfigFiles = [
+        self::DIST => [
+            self::APP_CONFIG => 'config.dist.php',
+            self::APP_ENV => 'env.dist.php',
+        ],
+        self::LOCAL => [
+            self::APP_CONFIG => 'config.local.php',
+            self::APP_ENV => 'env.local.php',
+        ]
     ];
 
     /**
@@ -25,16 +59,9 @@ class ConfigFilePool extends MagentoConfigFilePool
      *
      * @param array $additionalConfigFiles
      */
-    public function __construct($additionalConfigFiles = [], array $additionalSortOrder = [])
+    public function __construct($additionalConfigFiles = [])
     {
-        parent::__construct($additionalConfigFiles);
-        $this->configFilesOrder = array_merge($this->configFilesOrder, $additionalSortOrder);
-    }
-
-    private function setConfigEnvironmentMode()
-    {
-        $files = $this->getPaths();
-
+        $this->applicationConfigFiles = array_merge($this->applicationConfigFiles, $additionalConfigFiles);
     }
 
     /**
@@ -44,21 +71,7 @@ class ConfigFilePool extends MagentoConfigFilePool
      */
     public function getPaths()
     {
-        if (!$this->configFiles) {
-            $this->configFiles = $this->sortConfigFiles(parent::getPaths(), $this->configFilesOrder);
-        }
-        return $this->configFiles;
-    }
-
-    private function sortConfigFiles(array $configFiles, array $sortOrder) : array
-    {
-        uksort(
-            $configFiles,
-            function ($a, $b) use ($sortOrder) {
-                return $sortOrder[$a] <=> $sortOrder[$b];
-            }
-        );
-        return $configFiles;
+        return $this->applicationConfigFiles;
     }
 
     /**
@@ -70,11 +83,34 @@ class ConfigFilePool extends MagentoConfigFilePool
      */
     public function getPath($fileKey)
     {
-        $configFiles = $this->getPaths();
-        if (!isset($configFiles[$fileKey])) {
+        if (!isset($this->applicationConfigFiles[$fileKey])) {
             throw new \Exception('File config key does not exist.');
         }
-        return $configFiles[$fileKey];
+        return $this->applicationConfigFiles[$fileKey];
+    }
 
+    /**
+     * Returns application initial config files.
+     *
+     * @return array
+     * @deprecated 100.2.0 Magento does not support custom config file pools since 2.2.0 version
+     * @since 100.1.3
+     */
+    public function getInitialFilePools()
+    {
+        return $this->initialConfigFiles;
+    }
+
+    /**
+     * Retrieve all config file pools.
+     *
+     * @param string $pool
+     * @return array
+     * @deprecated 100.2.0 Magento does not support custom config file pools since 2.2.0 version
+     * @since 100.1.3
+     */
+    public function getPathsByPool($pool)
+    {
+        return $this->initialConfigFiles[$pool];
     }
 }

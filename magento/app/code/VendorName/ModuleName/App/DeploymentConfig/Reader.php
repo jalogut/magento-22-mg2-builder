@@ -15,40 +15,75 @@ use Magento\Framework\Filesystem\DriverPool;
 
 class Reader extends MagentoReader
 {
-    const CONFIG_ENV = 'CONFIG_ENV';
+    const CONFIG_ENV_MODE = 'CONFIG_ENV_MODE';
+    /**
+     * @var string
+     */
+    private $configEnvMode;
 
+    /**
+     * @var DirectoryList
+     */
     private $dirList;
-    private $driverPool;
+
+    /**
+     * @var ConfigFilePool
+     */
     private $configFilePool;
 
+    /**
+     * @var DriverPool
+     */
+    private $driverPool;
+
+    /**
+     * Constructor
+     *
+     * @param DirectoryList $dirList
+     * @param DriverPool $driverPool
+     * @param ConfigFilePool $configFilePool
+     * @param null|string $file
+     * @throws \InvalidArgumentException
+     */
     public function __construct(
         DirectoryList $dirList,
         DriverPool $driverPool,
         ConfigFilePool $configFilePool,
         $file = null
     ) {
-        parent::__construct($dirList, $driverPool, $configFilePool, $file);
         $this->dirList = $dirList;
-        $this->driverPool = $driverPool;
         $this->configFilePool = $configFilePool;
+        $this->driverPool = $driverPool;
+        parent::__construct($dirList, $driverPool, $configFilePool, $file);
     }
 
     public function load($fileKey = null)
     {
-        $this->setConfigEnvironment();
+        $configEnvMode = $this->getConfigEnvMode();
+        if ($configEnvMode) {
+            putenv(self::CONFIG_ENV_MODE . "=" . $configEnvMode);
+        }
         return parent::load($fileKey);
     }
 
-    private function setConfigEnvironment()
+    /**
+     * Get CONFIG_ENV_MODE from env.php file configuration
+     *
+     * @return string
+     */
+    private function getConfigEnvMode() : string
     {
-        $path = $this->dirList->getPath(DirectoryList::CONFIG);
-        $fileDriver = $this->driverPool->getDriver(DriverPool::FILE);
-        $envFile = $path . '/' . $this->configFilePool->getPath(ConfigFilePool::APP_ENV);
-        if ($fileDriver->isExists($envFile)) {
-            $config = include $envFile;
-            if (isset($config[self::CONFIG_ENV])) {
-                putenv(self::CONFIG_ENV . "=" . $config[self::CONFIG_ENV]);
+        if (!isset($this->configEnvMode)) {
+            $configPath = $this->dirList->getPath(DirectoryList::CONFIG);
+            $fileDriver = $this->driverPool->getDriver(DriverPool::FILE);
+            $envFile = $configPath . '/' . $this->configFilePool->getPath(ConfigFilePool::APP_ENV);
+            if ($fileDriver->isExists($envFile)) {
+                $config = include $envFile;
+                $this->configEnvMode = $config[self::CONFIG_ENV_MODE] ?? "";
+            } else {
+                $this->configEnvMode = "";
             }
         }
+        return $this->configEnvMode;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'VendorName_ModuleName2',
+    'NomadMage_Demo',
     __DIR__
 );

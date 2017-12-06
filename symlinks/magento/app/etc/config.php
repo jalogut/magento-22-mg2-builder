@@ -109,31 +109,10 @@ return array (
     'Magento_Weee' => 1,
     'Magento_CatalogWidget' => 1,
     'Magento_Wishlist' => 1,
+    'NomadMage_Demo' => 1,
     'Shopial_Facebook' => 1,
     'TddWizard_Fixtures' => 0,
-    'VendorName_ModuleName' => 0,
-    'VendorName_ModuleName2' => 1,
-  ),
-  'system' => 
-  array (
-    'default' => 
-    array (
-      'dev' => 
-      array (
-        'js' => 
-        array (
-          'minify_files' => '1',
-        ),
-        'css' => 
-        array (
-          'minify_files' => '1',
-        ),
-        'static' => 
-        array (
-          'sign' => '1',
-        ),
-      ),
-    ),
+    'VendorName_ModuleName' => 1,
   ),
   'i18n' => 
   array (
@@ -244,6 +223,27 @@ return array (
       'area' => 'adminhtml',
       'type' => '0',
       'code' => 'Magento/backend',
+    ),
+  ),
+  'system' => 
+  array (
+    'default' => 
+    array (
+      'dev' => 
+      array (
+        'js' => 
+        array (
+          'minify_files' => '1',
+        ),
+        'css' => 
+        array (
+          'minify_files' => '1',
+        ),
+        'static' => 
+        array (
+          'sign' => '1',
+        ),
+      ),
     ),
   )
 );
