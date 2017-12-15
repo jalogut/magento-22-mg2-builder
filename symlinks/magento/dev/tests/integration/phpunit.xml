@@ -20,7 +20,7 @@ IMPORTANT: Relative paths must be set according to the original path of this fil
     <!-- Test suites definition -->
     <testsuites>
         <testsuite name="NomadMage">
-            <directory suffix="Test.php">&magentoDir;/app/code/NomadMage/*/Test/Integration</directory>
+            <directory suffix="Test.php">&magentoDir;/app/code/Demo/*/Test/Integration</directory>
         </testsuite>
     </testsuites>
     <!-- Code coverage filters -->

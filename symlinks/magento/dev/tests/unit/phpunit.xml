@@ -21,7 +21,7 @@ IMPORTANT: Relative paths must be set according to the original path of this fil
          bootstrap="&unitTestsDir;/framework/bootstrap.php"
 >
     <testsuite name="NomadMage">
-        <directory suffix="Test.php">&magentoDir;/app/code/NomadMage/*/Test/Unit</directory>
+        <directory suffix="Test.php">&magentoDir;/app/code/Demo/*/Test/Unit</directory>
     </testsuite>
     <php>
         <ini name="date.timezone" value="America/Los_Angeles"/>
