@@ -23,23 +23,6 @@
             </argument>
         </arguments>
     </type>
-    <!-- Patch define configuration by environment
-        https://github.com/magento/magento2/pull/12361
-    -->
-    <preference for="Magento\Framework\Config\File\ConfigFilePool" type="VendorName\ModuleName\Config\File\ConfigFilePool"/>
-    <preference for="Magento\Framework\App\DeploymentConfig\Reader" type="VendorName\ModuleName\App\DeploymentConfig\Reader"/>
-    <virtualType name="CustomDeploymentConfig" type="Magento\Framework\App\DeploymentConfig"/>
-    <preference for="Magento\Framework\App\DeploymentConfig" type="CustomDeploymentConfig"/>
-    <type name="Magento\Deploy\Model\DeploymentConfig\DataCollector">
-        <arguments>
-            <argument name="deploymentConfig" xsi:type="object">CustomDeploymentConfig</argument>
-        </arguments>
-    </type>
-    <type name="Magento\Deploy\Console\Command\App\ConfigImport\Processor">
-        <arguments>
-            <argument name="deploymentConfig" xsi:type="object">CustomDeploymentConfig</argument>
-        </arguments>
-    </type>
     <!-- Patch no dump system settings
         https://github.com/magento/magento2/pull/12410
     -->

@@ -1,0 +1,27 @@
+parameters:
+    magento_dir: magento
+    git_dir: .
+    bin_dir: bin
+    hide_circumvention_tip: true
+    tasks:
+      composer:
+          file: ./composer.json
+          no_check_all: true
+          no_check_lock: false
+          no_check_publish: false
+          with_dependencies: false
+          strict: false
+      git_blacklist:
+          keywords:
+              - "die("
+              - "var_dump("
+              - "exit;"
+              - "console.log("
+      phpcs:
+          standard: "PSR2"
+          show_warnings: true
+          tab_width: 4
+          ignore_patterns: [test, /etc/config.php]
+      phpmd:
+          exclude: []
+          ruleset: [%magento_dir%/dev/tests/static/testsuite/Magento/Test/Php/_files/phpmd/ruleset.xml]

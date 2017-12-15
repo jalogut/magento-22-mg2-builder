@@ -24,16 +24,19 @@
     {"type": "composer", "url": "https://repo.magento.com/"}
   ],
   "require": {
-    "staempfli/magento2-builder-tool": "dev-magento2.2",
+    "staempfli/magento2-builder-tool": "^2.0",
     "n98/magerun2": "^1.4",
-    "magento/product-community-edition": "~2.2.1",
+    "magento/product-community-edition": "2.2.1",
     "composer/composer": "@alpha",
     "staempfli/symlinker-pro": "~1.0",
     "avstudnitz/scopehint2": "~1.0.1"
   },
   "require-dev": {
     "tddwizard/magento2-fixtures": "dev-master@dev",
-    "phpunit/phpunit": "~6.2.0"
+    "phpunit/phpunit": "~6.2.0",
+    "phpro/grumphp": "^0.11",
+    "squizlabs/php_codesniffer": "^2.0",
+    "phpmd/phpmd": "^2.5"
   },
   "extra": {
     "magento-root-dir": "magento/",
@@ -65,6 +68,8 @@
     "preventRunningComposerInMagentoFolder": "[ ! $(basename `pwd`) = 'magento' ] || { echo 'Checking current dir is not magento folder'; exit 1; }",
     "setPermissionsBin": "chmod -R +x bin magento/bin",
     "setSymlinks": "bin/symlinker-pro create:from:file config/symlinks/magento.symlinks -f --enable-wildcards",
+    "grumphpInitProject": "[ ! `which grumphp` ] || [ ! -e magento/vendor/staempfli/magento2-conventions-checker ] || grumphp git:init",
+    "grumphpInitModules": "[ ! `which grumphp` ] || [ ! -e magento/vendor/staempfli/magento2-conventions-checker ] || find magento/vendor/staempfli/* -type f -name grumphp.yml -maxdepth 1 -exec dirname {} \\; | xargs -I{} bash -c \"cd '{}' && grumphp git:init\"",
     "pre-install-cmd": [
         "@preventRunningComposerInMagentoFolder"
     ],
@@ -73,11 +78,15 @@
     ],
     "post-install-cmd": [
         "@setPermissionsBin",
-        "@setSymlinks"
+        "@setSymlinks",
+        "@grumphpInitProject",
+        "@grumphpInitModules"
     ],
     "post-update-cmd": [
         "@setPermissionsBin",
-        "@setSymlinks"
+        "@setSymlinks",
+        "@grumphpInitProject",
+        "@grumphpInitModules"
     ]
   }
 }
