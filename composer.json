@@ -33,10 +33,7 @@
   },
   "require-dev": {
     "tddwizard/magento2-fixtures": "dev-master@dev",
-    "phpunit/phpunit": "~6.2.0",
-    "phpro/grumphp": "^0.11",
-    "squizlabs/php_codesniffer": "^2.0",
-    "phpmd/phpmd": "^2.5"
+    "phpunit/phpunit": "~6.2.0"
   },
   "extra": {
     "magento-root-dir": "magento/",
@@ -68,8 +65,8 @@
     "preventRunningComposerInMagentoFolder": "[ ! $(basename `pwd`) = 'magento' ] || { echo 'Checking current dir is not magento folder'; exit 1; }",
     "setPermissionsBin": "chmod -R +x bin magento/bin",
     "setSymlinks": "bin/symlinker-pro create:from:file config/symlinks/magento.symlinks -f --enable-wildcards",
-    "grumphpInitProject": "[ ! -e bin/grumphp ] || bin/grumphp git:init",
-    "grumphpInitModules": "[ ! -e bin/grumphp ] || find magento/vendor/staempfli/* -type f -name grumphp.yml -maxdepth 1 -exec dirname {} \\; | xargs -I{} bash -c \"cd '{}' && bin/grumphp git:init\"",
+    "grumphpInitProject": "[ ! `which grumphp` ] || grumphp git:init",
+    "grumphpInitModules": "[ ! `which grumphp` ] || find magento/vendor/staempfli/* -type f -name grumphp.yml -maxdepth 1 -exec dirname {} \\; | xargs -I{} bash -c \"cd '{}' && grumphp git:init\"",
     "pre-install-cmd": [
         "@preventRunningComposerInMagentoFolder"
     ],
