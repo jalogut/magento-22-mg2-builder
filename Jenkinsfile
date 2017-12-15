@@ -40,7 +40,7 @@ node {
                     sh "git remote set-branches --add origin master && git remote set-branches --add origin develop && git fetch"
                     sh "git checkout master && git checkout develop && git checkout ${BRANCH_NAME}"
                     sh "git flow init -d"
-                    //sh "bin/mg2-builder release:finish -Drelease.type=${branchInfo.type} -Drelease.version=${branchInfo.version}"  
+                    sh "bin/mg2-builder release:finish -Drelease.type=${branchInfo.type} -Drelease.version=${branchInfo.version}"
                 }
                 if (server == 'stage' || server == 'both') {
                     stage ('Artifact') {
