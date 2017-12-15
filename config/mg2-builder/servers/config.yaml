@@ -3,3 +3,15 @@ IGR:
   port: 22
   rootDir: /home/magento22/public_html
   deployUsername: magento22
+
+STAGE:
+  host: devlinux04dmz.staempfli.dmz
+  port: 22
+  rootDir: /home/magento22/public_html
+  deployUsername: magento22
+
+PROD:
+  host: devlinux04dmz.staempfli.dmz
+  port: 22
+  rootDir: /home/magento22/public_html
+  deployUsername: magento22
