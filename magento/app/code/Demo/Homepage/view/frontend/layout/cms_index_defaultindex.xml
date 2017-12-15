@@ -9,7 +9,7 @@
     <body>
         <referenceContainer name="content">
             <referenceBlock name="default_home_page" remove="true"/>
-            <block class="Magento\Framework\View\Element\Template" name="demo_default_home_page" template="NomadMage_Demo::home.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="demo_default_home_page" template="Demo_Homepage::home.phtml"/>
         </referenceContainer>
     </body>
 </page>

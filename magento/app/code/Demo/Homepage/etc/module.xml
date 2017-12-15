@@ -1,4 +1,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
-    <module name="VendorName_ModuleName" setup_version="0.0.2" >
+    <module name="Demo_Homepage" setup_version="0.0.1" >
+        <sequence>
+            <module name="Magento_Cms"/>
+        </sequence>
     </module>
 </config>

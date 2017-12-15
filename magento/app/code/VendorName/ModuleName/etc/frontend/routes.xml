@@ -1,7 +1,0 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/App/etc/routes.xsd">
-    <router id="standard">
-        <route id="projectfrontname" frontName="projectfrontname">
-            <module name="VendorName_ModuleName" />
-        </route>
-    </router>
-</config>
