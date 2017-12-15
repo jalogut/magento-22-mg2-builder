@@ -46,7 +46,7 @@ node {
                     stage ('Artifact') {
                         sh "bin/mg2-builder artifact:transfer -Dartifact.name=${branchInfo.version} -Dremote.environment=stage -Duse.server.properties"
                     }
-                    stage ('Deploy DEV') {
+                    stage ('Deploy STAGE') {
                         sh "bin/mg2-builder release:deploy -Dremote.environment=stage -Drelease.version=${branchInfo.version} -Ddeploy.build.type=artifact"
                     }
                 }
@@ -54,19 +54,19 @@ node {
                     stage ('Artifact') {
                         sh "bin/mg2-builder artifact:transfer -Dartifact.name=${branchInfo.version} -Dremote.environment=prod -Duse.server.properties"
                     }
-                    stage ('Deploy DEV') {
+                    stage ('Deploy PROD') {
                         sh "bin/mg2-builder release:deploy -Dremote.environment=prod -Drelease.version=${branchInfo.version} -Ddeploy.build.type=artifact"
                     }
                 }
             }
         }
       	stage ('Clean Up') {
-            sh "rm -rf ${artifactFilename}"
             sh "bin/mg2-builder util:db:clean -Dproject.name=${BRANCH_NAME} -Ddatabase.admin.username=${DATABASE_USER} -Ddatabase.admin.password=${DATABASE_PASS}"
             deleteDir()
         }
     } catch (err) {
         currentBuild.result = 'FAILED'
+        // Send email or another notification
         throw err
     }
 }
