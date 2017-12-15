@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "68249cba0f35eae503fdbd6a228fec39",
+    "content-hash": "a8d48a97065f204aab0e309e2135a822",
     "packages": [
         {
             "name": "avstudnitz/scopehint2",
@@ -11142,59 +11142,6 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
-            "name": "tddwizard/magento2-fixtures",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tddwizard/magento2-fixtures.git",
-                "reference": "fc8eee01d0294f56afcfa3b94724caddb3278610"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tddwizard/magento2-fixtures/zipball/fc8eee01d0294f56afcfa3b94724caddb3278610",
-                "reference": "fc8eee01d0294f56afcfa3b94724caddb3278610",
-                "shasum": ""
-            },
-            "require": {
-                "magento/framework": "^100.1|^101.0",
-                "magento/module-catalog": "^101.0|^102.0",
-                "magento/module-checkout": "^100.1",
-                "magento/module-customer": "^100.1|^101.0",
-                "magento/module-indexer": "^100.0",
-                "magento/zendframework1": "^1.12",
-                "php": "^7.0|^7.1"
-            },
-            "require-dev": {
-                "pds/skeleton": "^1.0",
-                "phpro/grumphp": "^0.11.6",
-                "phpstan/phpstan": "^0.8.0",
-                "phpunit/phpunit": "^5.0|^6.0",
-                "squizlabs/php_codesniffer": "^3.0"
-            },
-            "type": "magento2-module",
-            "autoload": {
-                "files": [
-                    "registration.php",
-                    "src/phpunit4.php"
-                ],
-                "psr-4": {
-                    "TddWizard\\Fixtures\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabian Schmengler",
-                    "email": "fs@integer-net.de"
-                }
-            ],
-            "description": "Fixture library for Magento 2 integration tests",
-            "time": "2017-12-14T14:55:56+00:00"
-        },
-        {
             "name": "theseer/tokenizer",
             "version": "1.1.0",
             "source": {
@@ -11288,8 +11235,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "composer/composer": 15,
-        "tddwizard/magento2-fixtures": 20
+        "composer/composer": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -32,7 +32,6 @@
     "avstudnitz/scopehint2": "~1.0.1"
   },
   "require-dev": {
-    "tddwizard/magento2-fixtures": "dev-master@dev",
     "phpunit/phpunit": "~6.2.0"
   },
   "extra": {
