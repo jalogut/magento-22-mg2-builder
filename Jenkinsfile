@@ -2,7 +2,7 @@ node {
  	// Clean workspace before doing anything
     deleteDir()
 
-    MAGENTO_DIR=magento
+    MAGENTO_DIR='magento'
 
     try {
         stage ('Clone') {
