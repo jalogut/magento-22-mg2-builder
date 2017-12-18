@@ -34,15 +34,17 @@ node {
             }
         }
         if (branchInfo.type == 'release' || branchInfo.type == 'hotfix') {
-            server = confirmServerToDeploy()
-            if (server) {
+            stage ('Confirm Deploy') {
+                confirmedServer = confirmServerToDeploy()
+            }
+            if (confirmedServer) {
                 stage ('TAG VERSION') {
                     sh "git remote set-branches --add origin master && git remote set-branches --add origin develop && git fetch"
                     sh "git checkout master && git checkout develop && git checkout ${BRANCH_NAME}"
                     sh "git flow init -d"
                     sh "bin/mg2-builder release:finish -Drelease.type=${branchInfo.type} -Drelease.version=${branchInfo.version}"
                 }
-                if (server == 'stage' || server == 'both') {
+                if (confirmedServer in ['stage','both']) {
                     stage ('Artifact') {
                         sh "bin/mg2-builder artifact:transfer -Dartifact.name=${branchInfo.version} -Dremote.environment=stage -Duse.server.properties"
                     }
@@ -50,7 +52,7 @@ node {
                         sh "bin/mg2-builder release:deploy -Dremote.environment=stage -Drelease.version=${branchInfo.version} -Ddeploy.build.type=artifact"
                     }
                 }
-                if (server == 'production' || server == 'both') {
+                if (confirmedServer in ['production','both']) {
                     stage ('Artifact') {
                         sh "bin/mg2-builder artifact:transfer -Dartifact.name=${branchInfo.version} -Dremote.environment=prod -Duse.server.properties"
                     }
